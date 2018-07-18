@@ -49,6 +49,7 @@ set foldlevel=99
 
 set clipboard=unnamed
 
+set t_Co=256
 
 " ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
