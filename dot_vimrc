@@ -20,6 +20,7 @@ Plugin 'jiangmiao/auto-pairs'
 "Plugin 'tell-k/vim-autopep8'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'tpop/vim-fugitive'
+Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
 
@@ -84,6 +85,11 @@ endfun
 
 " auto add html header --start
 "autocmd BufNewFile *.html 0r ~/.vim/templates/html_header
+
+" html emmet
+let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key='<Tab>'
+autocmd FileType html,css EmmetInstall
 
 " auto add html header --end
 
