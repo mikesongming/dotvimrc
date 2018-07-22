@@ -117,5 +117,8 @@ function! MyTabFunction ()
 endfunction
 inoremap <tab> <c-r>=MyTabFunction()<cr>
 
+" Powerline setting
+set laststatus=2
+let g:Powerline_symbols='unicode'
 
 colorscheme monokai
