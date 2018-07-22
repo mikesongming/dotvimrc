@@ -10,7 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Lokaltog/vim-powerline'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'crusoexia/vim-monokai'
@@ -23,6 +23,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'metakirby5/codi.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -58,7 +59,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 let javascript_enable_domhtmlcss = 1
 
 " auto add pyhton header --start
-"autocmd BufNewFile *.py 0r ~/.vim/templates/python_header
+autocmd BufNewFile *.py 0r ~/.vim/templates/python
 autocmd BufNewFile *.py ks|call FileName()|'s
 autocmd BufNewFile *.py ks|call CreatedTime()|'s
 
@@ -84,13 +85,37 @@ endfun
 " auto add python header --end
 
 " auto add html header --start
-"autocmd BufNewFile *.html 0r ~/.vim/templates/html_header
+"autocmd BufNewFile *.html 0r ~/.vim/templates/html
 
 " html emmet
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key='<Tab>'
+"autocmd FileType html,css set shiftwidth=4
 autocmd FileType html,css EmmetInstall
 
 " auto add html header --end
+
+" Codi, scratchpad for hackers
+"autocmd FileType python Codi
+"autocmd FileType javascript Codi
+
+" YouCompleteMe
+let g:ycm_min_num_of_chars_for_completion = 3 
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_complete_in_comments = 0
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+" TAB completion in YCM 
+function! MyTabFunction ()
+    let line = getline('.')
+    let substr = strpart(line, -1, col('.')+1)
+    let substr = matchstr(substr, "[^ \t]*$")
+    if strlen(substr) == 0
+        return "\<tab>"
+    endif
+    return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
+endfunction
+inoremap <tab> <c-r>=MyTabFunction()<cr>
+
 
 colorscheme monokai
