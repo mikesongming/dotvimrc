@@ -25,6 +25,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'metakirby5/codi.vim'
 
+Plugin 'mrk21/yaml-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
