@@ -1,6 +1,7 @@
 #! /bin/bash
 
 cp -f dot_vimrc ~/.vimrc
+cp -f dot_zshrc ~/.zshrc
 
 mkdir -p ~/.vim/templates
 cp templates/* ~/.vim/templates/
