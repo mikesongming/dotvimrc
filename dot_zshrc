@@ -65,7 +65,7 @@ plugins=(
   git pyenv python 
   node npm npx
   autojump zsh-syntax-highlighting
-  docker docker-compose docker-machine
+  docker #docker-compose docker-machine
   kubectl minikube
 )
 
@@ -103,10 +103,7 @@ source $ZSH/oh-my-zsh.sh
 #export PYTHONSTARTUP=$HOME/.pythonstartup
 #export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 #source /usr/local/bin/virtualenvwrapper.sh
-
-export NODE_PATH=/usr/local/lib/node_modules
-
+#
 #export PATH="$HOME/.cargo/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
