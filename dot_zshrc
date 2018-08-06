@@ -65,7 +65,7 @@ plugins=(
   git pyenv python 
   node npm npx
   autojump zsh-syntax-highlighting
-  docker #docker-compose docker-machine
+  docker docker-compose #docker-machine
   kubectl minikube
 )
 
