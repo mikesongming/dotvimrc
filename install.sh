@@ -3,6 +3,8 @@
 cp -f dot_zshrc ~/.zshrc
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh 
 
+cp -f dot_tmux.conf ~/.tmux.conf
+
 cp -f dot_vimrc ~/.vimrc
 
 mkdir -p ~/.vim/templates
