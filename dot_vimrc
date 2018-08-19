@@ -27,6 +27,8 @@ Plugin 'metakirby5/codi.vim'
 
 Plugin 'mrk21/yaml-vim'
 
+Plugin 'fatih/vim-go'
+
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
