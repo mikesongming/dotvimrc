@@ -64,6 +64,7 @@ ZSH_THEME="ys"
 plugins=(
   git pyenv python 
   node npm npx
+  go golang
   autojump zsh-syntax-highlighting
   docker docker-compose #docker-machine
   kubectl minikube
@@ -106,5 +107,8 @@ alias vi="vim"
 #source /usr/local/bin/virtualenvwrapper.sh
 #
 #export PATH="$HOME/.cargo/bin:$PATH"
+
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
