@@ -108,7 +108,7 @@ alias vi="vim"
 #
 #export PATH="$HOME/.cargo/bin:$PATH"
 
-export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$PATH"
+#export GOPATH=$HOME/go
+#export PATH="$GOPATH/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
