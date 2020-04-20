@@ -8,7 +8,7 @@ COPY ali.list /etc/apt/sources.list
 RUN apt-get update
 RUN sleep 3
 
-RUN apt-get install curl wget mlocate -y
+RUN apt-get install curl wget mlocate tree -y
 RUN apt-get install apt-utils -y
 RUN apt-get install build-essential libssl-dev -y
 RUN apt-get install vim -y
