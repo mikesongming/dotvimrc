@@ -12,8 +12,8 @@ RUN chmod 777 /tmp
 ADD dotphiles /opt/dotphiles
 
 ARG USERNAME=songming
-ARG USER_UID=1001
-ARG USER_GID=$USER_UID
+#ARG USER_UID=1001
+#ARG USER_GID=$USER_UID
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -36,43 +36,40 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     # Configure GIT
     && git config --global user.name ${USERNAME} \
     && git config --global user.email "${USERNAME}@dev.org" \
-    # Create the user
-    && groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    && mkdir -p /home/$USERNAME/.vscode-server/extensions \
-        /home/$USERNAME/.vscode-server-insiders/extensions \
-    && chown -R $USERNAME \
-        /home/$USERNAME/.vscode-server \
-        /home/$USERNAME/.vscode-server-insiders \
-    # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME \
-    # Clean up
-    && updatedb && rm -rf /tmp/*
-
-# [Optional] Set the default user. Omit if you want to keep the default as root.
-USER $USERNAME
-
-RUN git config --global user.name ${USERNAME} \
-    && git config --global user.email "${USERNAME}@dev.org" \
     # Configure VIM
-    && mkdir -p /home/${USERNAME}/.vim/bundle \
+    && mkdir -p /root/.vim/bundle \
     && git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git \
-        /home/${USERNAME}/.vim/bundle/Vundle.vim \
-    && cp /opt/dotphiles/dot_vimrc /home/${USERNAME}/.vimrc \
+        /root/.vim/bundle/Vundle.vim \
+    && cp /opt/dotphiles/dot_vimrc /root/.vimrc \
     && vim -c PluginInstall -c q -c q \
     # Configure Python
-    && mkdir /home/${USERNAME}/.pip && cp /opt/dotphiles/pip.conf /home/${USERNAME}/.pip/pip.conf \
-    && cp /opt/dotphiles/pythonstartup.py /home/${USERNAME}/.pythonstartup \
+    && mkdir /root/.pip && cp /opt/dotphiles/pip.conf /root/.pip/pip.conf \
+    && cp /opt/dotphiles/pythonstartup.py /root/.pythonstartup \
     # Configure Zsh by Oh-My-ZSH
-    && git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git /home/${USERNAME}/.oh-my-zsh \
+    && git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git /root/.oh-my-zsh \
     && git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git \
-        /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
-    && cp /opt/dotphiles/dot_zshrc /home/${USERNAME}/.zshrc \
-    && /usr/local/anaconda3/bin/conda init zsh bash
+        /root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
+    && cp /opt/dotphiles/dot_zshrc /root/.zshrc \
+    && /usr/local/anaconda3/bin/conda init zsh bash \
+    ## [Optional] Create the user
+    #&& groupadd --gid $USER_GID $USERNAME \
+    #&& useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    #&& mkdir -p /home/$USERNAME/.vscode-server/extensions \
+    #    /home/$USERNAME/.vscode-server-insiders/extensions \
+    #&& chown -R $USERNAME \
+    #    /home/$USERNAME/.vscode-server \
+    #    /home/$USERNAME/.vscode-server-insiders \
+    ## Add sudo support. Omit if you don't need to install software after connecting.
+    #&& echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    #&& chmod 0440 /etc/sudoers.d/$USERNAME \
+    # Clean up
+    && updatedb && rm -rf /tmp/* /opt/dotphiles
+
+# [Optional] Set the default user. Omit if you want to keep the default as root.
+# USER $USERNAME
 
 ENV DEBIAN_FRONTEND=dialog
 
 #ENV PATH /usr/local/anaconda3/bin:$PATH
 
-CMD /usr/bin/zsh
+CMD ["/usr/bin/zsh"]
