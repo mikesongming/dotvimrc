@@ -6,7 +6,7 @@
 
     // Set *default* container specific settings.json values on container create.
     "settings": {
-        //"terminal.integrated.shell.linux": "/bin/bash"
+        "terminal.integrated.shell.linux": "/bin/bash"
     },
 
     // Add the IDs of extensions you want installed when the container is created.
@@ -30,10 +30,11 @@
 
     // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-in-docker.
     "mounts": [ 
-        "source=/data/songming/vsc-remote/GPPDuCUDA,target=/workspace/GPPDuCUDA,type=bind,consistency=cached",
+        "source=vsc-remote-opt,target=/opt,type=volume",
         "source=vsc-remote-extensions,target=/root/.vscode-server/extensions,type=volume",
         // And/or for VS Code Insiders
         "source=vsc-insiders-remote-extensions,target=/root/.vscode-server-insiders/extensions,type=volume",
+        "source=/data/songming/vsc-remote/GPPDuCUDA,target=/workspace/GPPDuCUDA,type=bind,consistency=cached"
     ],
 
     // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
