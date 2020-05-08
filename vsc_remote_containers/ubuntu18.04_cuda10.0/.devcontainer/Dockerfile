@@ -10,11 +10,12 @@ FROM gnosoir/nvidia-cuda:10.0-devel
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN apt-get install gdb
 #RUN apt-get update \
 #    && apt-get -y install --no-install-recommends \
 #        apt-utils build-essential software-properties-common \
 #        openssl libssl-dev sudo curl wget \
-#        mlocate tree vim zsh git-core \
+#        mlocate tree vim zsh git-core gdb \
 #    # Clean up
 #    && apt-get autoremove -y \
 #    && apt-get clean -y \

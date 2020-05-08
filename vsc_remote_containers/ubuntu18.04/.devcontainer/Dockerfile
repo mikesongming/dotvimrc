@@ -9,6 +9,7 @@ FROM gnosoir/ubuntu:bionic-devel
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN apt-get install gdb
 # Clean up
 #RUN apt-get autoremove -y \
 #   && apt-get clean -y \
