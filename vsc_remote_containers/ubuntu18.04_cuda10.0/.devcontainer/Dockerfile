@@ -10,7 +10,7 @@ FROM gnosoir/nvidia-cuda:10.0-devel
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get install gdb
+RUN apt-get install gdb -y
 #RUN apt-get update \
 #    && apt-get -y install --no-install-recommends \
 #        apt-utils build-essential software-properties-common \
