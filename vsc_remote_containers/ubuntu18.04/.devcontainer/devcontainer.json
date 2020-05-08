@@ -13,7 +13,7 @@
     "extensions": [
         "fabiospampinato.vscode-diff",
         "mutantdino.resourcemonitor"
-    ]
+    ],
 
     // Remote-Container
     "workspaceFolder": "/workspace",

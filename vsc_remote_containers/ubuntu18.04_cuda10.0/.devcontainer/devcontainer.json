@@ -16,7 +16,7 @@
         "ms-vscode.cmake-tools",
         "hars.cppsnippets",
         "ms-vscode.cpptools"
-    ]
+    ],
 
     // Remote-Container
     "workspaceFolder": "/workspace",
@@ -34,7 +34,7 @@
         "source=vsc-remote-extensions,target=/root/.vscode-server/extensions,type=volume",
         // And/or for VS Code Insiders
         "source=vsc-insiders-remote-extensions,target=/root/.vscode-server-insiders/extensions,type=volume",
-        "source=/data/songming/vsc-remote/GPPDuCUDA,target=/workspace/GPPDuCUDA,type=bind,consistency=cached"
+        //"source=/data/songming/vsc-remote/GPPDuCUDA,target=/workspace/GPPDuCUDA,type=bind,consistency=cached"
     ],
 
     // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
